@@ -14,12 +14,12 @@ namespace MoviesData.Models
         public int Rating { get; }
         public string ReviewText { get; }
         public string ReviewSite { get; }
-        public int IsRemoved { get; }
-        public DateTime CreatedOn { get; }
-        public DateTime UpdatedOn { get; }
+        //public int IsRemoved { get; }
+        //public DateTime CreatedOn { get; }
+        //public DateTime UpdatedOn { get; }
 
-        public Review(int ReviewID, int MovieID, int ReviewerID, int Rating, string ReviewText,
-            string ReviewSite, int isRemoved, DateTime createdOn, DateTime updatedOn)
+        public Review(int ReviewID, int MovieID, int ReviewerID, int Rating, string ReviewText, string ReviewSite)
+            //int isRemoved, DateTime createdOn, DateTime updatedOn)
         {
             this.ReviewID = ReviewID;
             this.MovieID = MovieID;
@@ -27,9 +27,9 @@ namespace MoviesData.Models
             this.Rating = Rating;
             this.ReviewText = ReviewText;
             this.ReviewSite = ReviewSite;
-            this.IsRemoved = isRemoved;
-            this.CreatedOn = createdOn;
-            this.UpdatedOn = updatedOn;
+            //this.IsRemoved = isRemoved;
+            //this.CreatedOn = createdOn;
+            //this.UpdatedOn = updatedOn;
         }
     }
 }

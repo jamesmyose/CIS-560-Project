@@ -11,19 +11,19 @@ namespace MoviesData.Models
         public int ReviewerID { get; }
         public string FirstName { get; }
         public string LastName { get; }
-        public int IsRemoved { get; }
-        public DateTime CreatedOn { get; }
-        public DateTime UpdatedOn { get; }
+        //public int isremoved { get; }
+        //public DateTime createdon { get; }
+        //public DateTime updatedon { get; }
 
-        public Reviewer(int ReviwerID, string firstName, string lastName,
-            int isRemoved, DateTime createdOn, DateTime updatedOn)
+        public Reviewer(int ReviwerID, string FirstName, string LastName)
+        //int IsRemoved, DateTime createdon, DateTime updatedon)
         {
             this.ReviewerID = ReviwerID;
-            FirstName = firstName;
-            LastName = lastName;
-            IsRemoved = isRemoved;
-            CreatedOn = createdOn;
-            UpdatedOn = updatedOn;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            //IsRemoved = isRemoved;
+            //CreatedOn = createdOn;
+            //UpdatedOn = updatedOn;
         }
     }
 }

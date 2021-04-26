@@ -90,55 +90,33 @@ GROUP BY M.MovieName, R.Rating, R.ReviewSite
 ORDER BY M.MovieName, R.ReviewSite, R.Rating;
 
 
--- Given an actor, show the degrees of seperation between them and all other actors (Six Degrees of Kevin Bacon)
-With DegreesOfSeperation AS (
-    Select A.FirstName, A.MiddleName, A.LastName, -1 AS Seperation, A.ActorID, MA.MovieID
+--For each actor, show all other actors that have been in a movie with them along with the movie they were in together
+With BaseCase AS (
+    Select A.FirstName, A.LastName, A.ActorID, MA.MovieID
     FROM Movies.Actors A
         INNER JOIN Movies.MovieActor MA ON MA.ActorID = A.ActorID
-    Where A.FirstName = 'Tim' AND A.LastName = 'Robbins'
-
-    UNION ALL
-
-    Select A.FirstName, A.MiddleName, A.LastName, D.Seperation + 1 AS Seperation, A.ActorID, MA.MovieID
-    FROM DegreesOfSeperation D
-        INNER JOIN Movies.MovieActor MA ON MA.MovieID = D.MovieID
+)
+Select D.ActorID, A.FirstName, A.MiddleName, A.LastName, M.MovieName
+    FROM BaseCase D
+        INNER JOIN Movies.Movie M ON M.MovieID = D.MovieID
+        INNER JOIN Movies.MovieActor MA ON MA.MovieID = M.MovieID
         INNER JOIN Movies.Actors A ON A.ActorID = MA.ActorID AND A.ActorID != D.ActorID
+Order BY D.ActorID;
+
         
-    WHERE D.Seperation < 1
-    -- DO not have heirarcal data on each actor. Must find way to bind actors that have already been picked so same list of actors is not infinitely picked. Capping Seperation level does not work
-    -- THouhg could limit the amount of recursions which is a step in the right direction
-)
 
-SELECT D.FirstName, D.MiddleName, D.LastName, D.Seperation
-FROM DegreesOfSeperation D
---GROUP BY D.FirstName, D.MiddleName, D.LastName, D.Seperation
-ORDER BY D.FirstName, D.MiddleName, D.LastName;
-
--- For each user that left a review, find all movies that they left a 7 or higher on and determine their most liked genre of movie.
-
-
---WITH FavoriteGenre AS (
-    SELECT 0 AS d, 0 AS c, 0 AS Ac,0 AS b, 0 AS h, 0 AS Ad, 0 AS w  
-    UNION ALL
-
-    SELECT RR.ReviewerID, M.MovieName,
-    CASE 
-        WHEN M.Genre1 = 'Drama' OR M.Genre2 = 'Drama' OR M.Genre3 = 'Drama' THEN @Drama + 1
-        WHEN M.Genre1 = 'Crime' OR M.Genre2 = 'Crime' OR M.Genre3 = 'Crime' THEN @Crime + 1
-        WHEN M.Genre1 = 'Action' OR M.Genre2 = 'Action' OR M.Genre3 = 'Action' THEN @Action + 1
-        WHEN M.Genre1 = 'Biography' OR M.Genre2 = 'Biography' OR M.Genre3 = 'Biography' THEN @Biography + 1
-        WHEN M.Genre1 = 'History' OR M.Genre2 = 'History' OR M.Genre3 = 'History' THEN @History + 1
-        WHEN M.Genre1 = 'Adventure' OR M.Genre2 = 'Adventure' OR M.Genre3 = 'Adventure' THEN @Adventure + 1
-        WHEN M.Genre1 = 'Western' OR M.Genre2 = 'Western' OR M.Genre3 = 'Western' THEN @Western + 1
-    END AS FavoriteGenre
-    FROM Movies.Reviewer RR
-        INNER JOIN Movies.Review R ON R.ReviewerID = RR.ReviewerID
-        INNER JOIN Movies.Movie M ON M.MovieID = R.MovieID
-    --GROUP BY RR.ReviewerID, M.MovieName
-    ORDER BY RR.ReviewerID
-)
-SELECT RR.ReviewerID
+-- For each user that left a review, find all reviews that they left a 7 or higher on and gather a running total for each genre that was part of a movie they left a review on
+SELECT RR.ReviewerID, M.MovieName, R.Rating, 
+Count(CASE WHEN M.Genre1 = 'Drama' OR M.Genre2 = 'Drama' OR M.Genre3 = 'Drama' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS DramaCount,
+Count(CASE WHEN M.Genre1 = 'Crime' OR M.Genre2 = 'Crime' OR M.Genre3 = 'Crime' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS CrimeCount,
+Count(CASE WHEN M.Genre1 = 'Action' OR M.Genre2 = 'Action' OR M.Genre3 = 'Action' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS ActionCount,
+Count(CASE WHEN M.Genre1 = 'Biography' OR M.Genre2 = 'Biography' OR M.Genre3 = 'Biography' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS BiographyCount,
+Count(CASE WHEN M.Genre1 = 'History' OR M.Genre2 = 'History' OR M.Genre3 = 'History' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS HistoryCount,
+Count(CASE WHEN M.Genre1 = 'Adventure' OR M.Genre2 = 'Adventure' OR M.Genre3 = 'Adventure' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS AdventureCount,
+Count(CASE WHEN M.Genre1 = 'Western' OR M.Genre2 = 'Western' OR M.Genre3 = 'Western' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS WesternCount
 FROM Movies.Reviewer RR
     INNER JOIN Movies.Review R ON R.ReviewerID = RR.ReviewerID
     INNER JOIN Movies.Movie M ON M.MovieID = R.MovieID
+WHERE R.Rating >= 7
 ORDER BY RR.ReviewerID
+-- OR M.Genre2 = N'Drama' OR M.Genre3 = N'Drama

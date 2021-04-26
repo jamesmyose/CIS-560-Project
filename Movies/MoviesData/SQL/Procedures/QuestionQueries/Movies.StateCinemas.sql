@@ -3,6 +3,6 @@ CREATE OR ALTER PROCEDURE Movies.StateCinemas
 AS
 
 -- All Movie Theaters in a given state
-SELECT C.City, C.[Address]
+SELECT * --C.City, C.[Address]
 FROM Movies.Cinema C
 WHere c.[State] = @State;

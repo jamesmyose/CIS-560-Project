@@ -5,6 +5,6 @@ CREATE OR ALTER PROCEDURE Movies.GenreMovies
 AS
 
 -- All movies that share a given genre
-SELECT M.MovieName
+SELECT * --M.MovieName
 FROM Movies.Movie M
 Where M.Genre1 = @Genre1 OR M.Genre2 = @Genre2 OR M.Genre3 = @Genre3;

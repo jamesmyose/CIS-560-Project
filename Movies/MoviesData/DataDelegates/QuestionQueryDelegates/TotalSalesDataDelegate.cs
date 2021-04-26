@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace MoviesData.DataDelegates
+namespace MoviesData.DataDelegates.QuestionQueryDelegates
 {
     internal class TotalSalesDataDelegate : DataReaderDelegate<int>
     {

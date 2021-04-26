@@ -16,8 +16,8 @@ namespace MovieData
         public DateTime CreatedOn { get; }
         public DateTime UpdatedOn { get; }
 
-
-        public Movie(int movieID, string genre1, string genre2, string genre3, string releaseDate, float costOfProduction, int isRemoved)
+        public Movie(int movieID, string genre1, string genre2, string genre3, string releaseDate, float costOfProduction,
+            int isRemoved, DateTime createdOn, DateTime updatedOn)
         {
             MovieID = movieID;
             Genre1 = genre1;
@@ -26,8 +26,8 @@ namespace MovieData
             ReleaseDate = releaseDate;
             CostOfProduction = costOfProduction;
             IsRemoved = isRemoved;
-            CreatedOn = DateTime.Now;
-            UpdatedOn = DateTime.Now;
+            CreatedOn = createdOn;
+            UpdatedOn = updatedOn;
         }
     }
 }

@@ -112,6 +112,33 @@ With DegreesOfSeperation AS (
 SELECT D.FirstName, D.MiddleName, D.LastName, D.Seperation
 FROM DegreesOfSeperation D
 --GROUP BY D.FirstName, D.MiddleName, D.LastName, D.Seperation
-ORDER BY D.FirstName, D.MiddleName, D.LastName
+ORDER BY D.FirstName, D.MiddleName, D.LastName;
 
 -- For each user that left a review, find all movies that they left a 7 or higher on and determine their most liked genre of movie.
+
+
+--WITH FavoriteGenre AS (
+    SELECT 0 AS d, 0 AS c, 0 AS Ac,0 AS b, 0 AS h, 0 AS Ad, 0 AS w  
+    UNION ALL
+
+    SELECT RR.ReviewerID, M.MovieName,
+    CASE 
+        WHEN M.Genre1 = 'Drama' OR M.Genre2 = 'Drama' OR M.Genre3 = 'Drama' THEN @Drama + 1
+        WHEN M.Genre1 = 'Crime' OR M.Genre2 = 'Crime' OR M.Genre3 = 'Crime' THEN @Crime + 1
+        WHEN M.Genre1 = 'Action' OR M.Genre2 = 'Action' OR M.Genre3 = 'Action' THEN @Action + 1
+        WHEN M.Genre1 = 'Biography' OR M.Genre2 = 'Biography' OR M.Genre3 = 'Biography' THEN @Biography + 1
+        WHEN M.Genre1 = 'History' OR M.Genre2 = 'History' OR M.Genre3 = 'History' THEN @History + 1
+        WHEN M.Genre1 = 'Adventure' OR M.Genre2 = 'Adventure' OR M.Genre3 = 'Adventure' THEN @Adventure + 1
+        WHEN M.Genre1 = 'Western' OR M.Genre2 = 'Western' OR M.Genre3 = 'Western' THEN @Western + 1
+    END AS FavoriteGenre
+    FROM Movies.Reviewer RR
+        INNER JOIN Movies.Review R ON R.ReviewerID = RR.ReviewerID
+        INNER JOIN Movies.Movie M ON M.MovieID = R.MovieID
+    --GROUP BY RR.ReviewerID, M.MovieName
+    ORDER BY RR.ReviewerID
+)
+SELECT RR.ReviewerID
+FROM Movies.Reviewer RR
+    INNER JOIN Movies.Review R ON R.ReviewerID = RR.ReviewerID
+    INNER JOIN Movies.Movie M ON M.MovieID = R.MovieID
+ORDER BY RR.ReviewerID

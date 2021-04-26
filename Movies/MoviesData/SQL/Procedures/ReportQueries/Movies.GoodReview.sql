@@ -5,7 +5,19 @@ CREATE OR ALTER PROCEDURE Movies.GoodReview
 AS
 
 -- For the given reviewer, find all reviews that they left the given rating or higher on and gather a running total for each genre that was part of a movie they left a review on
-SELECT RR.ReviewerID, M.MovieName, R.Rating, 
+SELECT  
+    RR.ReviewerID AS ReviewerID,
+    M.MovieID AS MovieID, 
+    M.MovieName AS MovieName,
+    M.Genre1 AS Genre1,
+    M.Genre2 AS Genre2,
+    M.Genre3 AS Genre3,
+    M.ReleaseDate AS ReleaseDate,
+    M.CostOfProduction AS CostOfProduction,
+    R.ReviewID AS ReviewID,
+    R.Rating AS Rating,
+    R.Review AS Review,
+    R.ReviewSite AS ReviewSite,
 Count(CASE WHEN M.Genre1 = 'Drama' OR M.Genre2 = 'Drama' OR M.Genre3 = 'Drama' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS DramaCount,
 Count(CASE WHEN M.Genre1 = 'Crime' OR M.Genre2 = 'Crime' OR M.Genre3 = 'Crime' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS CrimeCount,
 Count(CASE WHEN M.Genre1 = 'Action' OR M.Genre2 = 'Action' OR M.Genre3 = 'Action' THEN 1 END) OVER(Partition By RR.ReviewerID Order By R.ReviewID) AS ActionCount,

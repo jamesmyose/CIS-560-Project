@@ -8,7 +8,7 @@ With MovieSales AS (
     FROM Movies.MovieCinema MC
     GROUP BY MC.MovieID, MC.CinemaID
 )
-SELECT C.[State], C.City, C.Address, M.MovieName, MS.Sales,
+SELECT C.CinemaID, C.[State], C.City, C.Address, M.MovieName, MS.Sales,
         SUM(MS.Sales) OVER(Partition BY C.CinemaID ORDER BY C.CinemaID, M.MovieID) AS RunningSales
 FROM MovieSales MS
     INNER JOIN Movies.Movie M ON M.MovieID = MS.MovieID

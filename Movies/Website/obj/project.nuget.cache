@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KnqYA00eXqeFPyJKT/IgG03gszeBE8q4Rx3a8TocsIEa0JhTVkLA3IZrND51MhPipzcuZ201u43rMI3qywGuFQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jmyos\\OneDrive - Kansas State University\\560 CIS\\Project\\CIS-560-Project\\Movies\\Website\\Website.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jmyos\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

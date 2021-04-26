@@ -1,45 +1,74 @@
 ﻿using DataAccess;
 using MoviesData.Models;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace MoviesData.DataDelegates
 {
-    internal class FetchPersonDataDelegate : DataReaderDelegate<Movie>
+    internal class ActorMoviesDataDelegate : DataReaderDelegate<IReadOnlyList<Movie>>
     {
-        private readonly int movieID;
+        private readonly string firstName;
+        private readonly string lastName;
 
-        public FetchPersonDataDelegate(int movieID)
-           : base("Person.FetchPerson")
+        public ActorMoviesDataDelegate(string firstName, string lastName)
+           : base("Movies.ActorMovies")
         {
-            this.movieID = movieID;
+            this.firstName = firstName;
+            this.lastName = lastName;
         }
 
         public override void PrepareCommand(SqlCommand command)
         {
             base.PrepareCommand(command);
 
-            var p = command.Parameters.Add("movieID", SqlDbType.Int);
-            p.Value = movieID;
+            var p1 = command.Parameters.Add("firstName", SqlDbType.NVarChar);
+            var p2 = command.Parameters.Add("lastName", SqlDbType.NVarChar);
+            p1.Value = firstName;
+            p2.Value = lastName;
         }
 
-        public override Movie Translate(SqlCommand command, IDataRowReader reader)
+        public override IReadOnlyList<Movie> Translate(SqlCommand command, IDataRowReader reader)
         {
             if (!reader.Read())
-                throw new RecordNotFoundException(movieID.ToString());
+            {
+                throw new RecordNotFoundException((firstName + lastName).ToString());
+            }
 
-            return new Movie(movieID,
+
+            var movies = new List<Movie>();
+
+            while (reader.Read())
+            {
+                Movie addMovie = new Movie(reader.GetInt32("MovieID"),
+                   reader.GetString("Genre1"),
+                   reader.GetString("Genre2"),
+                   reader.GetString("Genre3"),
+                   reader.GetString("ReleaseDate"),
+                   reader.GetValue<float>("CostOfProduction")
+                   /*
+                   reader.GetString("IsRemoved"),
+                   reader.GetString("CreatedOn"),
+                   reader.GetString("UpdatedOn")
+                   */
+                   );
+                movies.Add(addMovie);
+            }
+
+            return movies;
+
+            /*
+            return new Movie(reader.GetInt32("MovieID"),
                reader.GetString("Genre1"),
                reader.GetString("Genre2"),
                reader.GetString("Genre3"),
                reader.GetString("ReleaseDate"),
                reader.GetValue<float>("CostOfProduction")
-               /*
-               reader.GetString("IsRemoved"),
-               reader.GetString("CreatedOn"),
-               reader.GetString("UpdatedOn")
-               */
+               //reader.GetString("IsRemoved"),
+               //reader.GetString("CreatedOn"),
+               //reader.GetString("UpdatedOn")
                );
+            */
         }
     }
 }

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataDelegates\ActorMovies.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Director.cs" />
@@ -49,12 +50,40 @@
     <Compile Include="Models\Reviewer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DataDelegates\" />
-    <Folder Include="SQL\Data\" />
-    <Folder Include="SQL\Procedures\" />
-    <Folder Include="SQL\Schemas\" />
-    <Folder Include="SQL\Tables\" />
+    <Content Include="SQL\Data\FinalProjectData.sql" />
+    <Content Include="SQL\Procedures\FinalProjectQueries.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.ActorMovies.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.ActorTotalSalary.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.DirectorMovies.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.GenreMovies.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.MovieReviews.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.ScoreReviews.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.StateCinemas.sql" />
+    <Content Include="SQL\Procedures\QuestionQueries\Movies.TotalSales.sql" />
+    <Content Include="SQL\Procedures\ReportQueries\Movies.ActorGenreMovies.sql" />
+    <Content Include="SQL\Procedures\ReportQueries\Movies.ActorInCommon.sql" />
+    <Content Include="SQL\Procedures\ReportQueries\Movies.GoodReview.sql" />
+    <Content Include="SQL\Procedures\ReportQueries\Movies.ShowingInfo.sql" />
+    <Content Include="SQL\Schemas\Movies.sql" />
+    <Content Include="SQL\Tables\DropTables.sql" />
+    <Content Include="SQL\Tables\FinalProjectTables.sql" />
+    <Content Include="SQL\Tables\Movies.Actors.sql" />
+    <Content Include="SQL\Tables\Movies.Cinema.sql" />
+    <Content Include="SQL\Tables\Movies.Directors.sql" />
+    <Content Include="SQL\Tables\Movies.Movie.sql" />
+    <Content Include="SQL\Tables\Movies.MovieActor.sql" />
+    <Content Include="SQL\Tables\Movies.MovieCinema.sql" />
+    <Content Include="SQL\Tables\Movies.MovieDirectors.sql" />
+    <Content Include="SQL\Tables\Movies.Review.sql" />
+    <Content Include="SQL\Tables\Movies.Reviewer.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{a4fb117c-c2f1-4d7c-933b-f546518d66ad}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -36,7 +36,7 @@ namespace MoviesData.DataDelegates.QuestionQueryDelegates
         {
             if (!reader.Read())
             {
-                throw new RecordNotFoundException((genre1 + "," + genre2 + "," + genre3).ToString());
+                throw new RecordNotFoundException((genre1 + ", " + genre2 + ", " + genre3).ToString());
             }
 
             var movies = new List<Movie>();

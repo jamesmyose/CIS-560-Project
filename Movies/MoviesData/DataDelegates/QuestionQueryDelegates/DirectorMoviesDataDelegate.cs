@@ -32,7 +32,7 @@ namespace MoviesData.DataDelegates.QuestionQueryDelegates
         {
             if (!reader.Read())
             {
-                throw new RecordNotFoundException((firstName + lastName).ToString());
+                throw new RecordNotFoundException((lastName + ", " + firstName).ToString());
             }
 
 

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace MoviesData.DataDelegates.ReportQueryDelegates
 {
-    public class ActorGenreMoviesDataDelegate : DataReaderDelegate<IReadOnlyList<(Movie, int, int, string)>>
+    internal class ActorGenreMoviesDataDelegate : DataReaderDelegate<IReadOnlyList<(Movie, int, int, string)>>
     {
         private readonly string firstName;
         private readonly string lastName;
@@ -73,7 +73,6 @@ namespace MoviesData.DataDelegates.ReportQueryDelegates
                 movies.Add((addMovie, totalReviews, rating, ratingSite));
             }
             return movies;
-
         }
     }
 }

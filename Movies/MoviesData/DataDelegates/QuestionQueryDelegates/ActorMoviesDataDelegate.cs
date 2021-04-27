@@ -32,7 +32,7 @@ namespace MoviesData.DataDelegates.QuestionQueryDelegates
         {
             if (!reader.Read())
             {
-                throw new RecordNotFoundException((firstName + lastName).ToString());
+                throw new RecordNotFoundException((lastName + ", " + firstName).ToString());
             }
 
 
@@ -40,11 +40,12 @@ namespace MoviesData.DataDelegates.QuestionQueryDelegates
 
             while (reader.Read())
             {
-                Movie addMovie = new Movie(reader.GetInt32("MovieID"),
+                Movie addMovie = new Movie(
+                   reader.GetInt32("MovieID"),
                    reader.GetString("Genre1"),
                    reader.GetString("Genre2"),
                    reader.GetString("Genre3"),
-                   reader.GetString("ReleaseDate"),
+                   reader.GetDateTimeOffset("ReleaseDate"),
                    reader.GetValue<float>("CostOfProduction")
                    /*
                    reader.GetString("IsRemoved"),

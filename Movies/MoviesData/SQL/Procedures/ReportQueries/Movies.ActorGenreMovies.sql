@@ -12,7 +12,17 @@ DECLARE @Genre NVARCHAR(64) = @Genre
 DECLARE @HighScore INT = @RatingMax
 DECLARE @LowScore INT = @RatingMin
 
-SELECT M.MovieName, COUNT(DISTINCT R.Review) AS TotalReviews, R.Rating, R.ReviewSite
+SELECT
+    M.MovieID AS MovieID, 
+    M.MovieName AS MovieName,
+    M.Genre1 AS Genre1,
+    M.Genre2 AS Genre2,
+    M.Genre3 AS Genre3,
+    M.ReleaseDate AS ReleaseDate,
+    M.CostOfProduction AS CostOfProduction,
+    COUNT(DISTINCT R.Review) AS TotalReviews,
+    R.Rating,
+    R.ReviewSite
 FROM Movies.Actors A
     INNER JOIN Movies.MovieActor MA on MA.ActorID = @ActorID
     INNER JOIN Movies.Movie M ON M.MovieID = MA.MovieID

@@ -1,0 +1,5 @@
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\UserInterface\obj\Debug\UserInterface.csprojAssemblyReference.cache
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\UserInterface\obj\Debug\UserInterface.Form1.resources
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\UserInterface\obj\Debug\UserInterface.Properties.Resources.resources
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\UserInterface\obj\Debug\UserInterface.csproj.GenerateResource.cache
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\UserInterface\obj\Debug\UserInterface.csproj.CoreCompileInputs.cache

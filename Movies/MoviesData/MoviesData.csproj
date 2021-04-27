@@ -41,7 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataDelegates\ActorMovies.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\ActorMoviesDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\ActorTotalSalaryDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\DirectorMoviesDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\GenreMoviesDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\MovieReviewsDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\ScoreReviewsDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\StateCinemasDataDelegate.cs" />
+    <Compile Include="DataDelegates\QuestionQueryDelegates\TotalSalesDataDelegate.cs" />
+    <Compile Include="DataDelegates\ReportQueryDelegates\ActorGenreMoviesDataDelegate.cs" />
+    <Compile Include="DataDelegates\ReportQueryDelegates\ActorInCommonDataDelegate.cs" />
+    <Compile Include="DataDelegates\ReportQueryDelegates\GoodReviewDataDelegate.cs" />
+    <Compile Include="DataDelegates\ReportQueryDelegates\ShowingInfoDataDelegate.cs" />
+    <Compile Include="ICinemaRepository.cs" />
+    <Compile Include="IMovieRepository.cs" />
+    <Compile Include="IActorRepository.cs" />
+    <Compile Include="IReviewRepository.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Director.cs" />
@@ -49,6 +64,10 @@
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Reviewer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlActorRepository.cs" />
+    <Compile Include="SqlCinemaRepository.cs" />
+    <Compile Include="SqlMoviesRepository.cs" />
+    <Compile Include="SqlReviewRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

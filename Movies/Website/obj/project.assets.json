@@ -8,19 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\jmyos\\.nuget\\packages\\": {}
+    "C:\\Users\\Imagi\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jmyos\\OneDrive - Kansas State University\\560 CIS\\Project\\CIS-560-Project\\Movies\\Website\\Website.csproj",
+      "projectUniqueName": "C:\\Users\\Imagi\\Source\\Repos\\CIS-560-Project\\Movies\\Website\\Website.csproj",
       "projectName": "Website",
-      "projectPath": "C:\\Users\\jmyos\\OneDrive - Kansas State University\\560 CIS\\Project\\CIS-560-Project\\Movies\\Website\\Website.csproj",
-      "packagesPath": "C:\\Users\\jmyos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jmyos\\OneDrive - Kansas State University\\560 CIS\\Project\\CIS-560-Project\\Movies\\Website\\obj\\",
+      "projectPath": "C:\\Users\\Imagi\\Source\\Repos\\CIS-560-Project\\Movies\\Website\\Website.csproj",
+      "packagesPath": "C:\\Users\\Imagi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Imagi\\Source\\Repos\\CIS-560-Project\\Movies\\Website\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\jmyos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Imagi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -55,12 +59,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.13, 3.1.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -69,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,2 @@
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\MoviesData\obj\Debug\MoviesData.csprojAssemblyReference.cache
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\MoviesData\obj\Debug\MoviesData.csproj.CoreCompileInputs.cache

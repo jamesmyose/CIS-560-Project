@@ -8,5 +8,9 @@ namespace MoviesData.DataDelegates.ReportQueryDelegates
 {
     internal class ShowingInfoDataDelegate : DataReaderDelegate<int>
     {
+        public override int Translate(SqlCommand command, IDataRowReader reader)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

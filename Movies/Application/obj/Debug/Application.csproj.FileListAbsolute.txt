@@ -1,0 +1,5 @@
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\Application\obj\Debug\Application.csprojAssemblyReference.cache
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\Application\obj\Debug\MainWindow.g.cs
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\Application\obj\Debug\App.g.cs
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\Application\obj\Debug\Application_MarkupCompile.cache
+C:\Users\Imagi\source\repos\CIS-560-Project\Movies\Application\obj\Debug\Application_MarkupCompile.lref
